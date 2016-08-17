@@ -23,6 +23,15 @@ defmodule Contactapi.User do
       |> changeset(params)
       |> cast(params, ~w(password), [])
       |> validate_length(:password, min: 6, max: 100)
+      |> put_hashed_password
   end
 
+  def put_hashed_password(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
+      _ ->
+        changeset
+    end
+  end
 end
