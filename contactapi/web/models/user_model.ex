@@ -2,6 +2,7 @@ defmodule Contactapi.User do
   """
   User Model
   """
+  use Contactapi.Web, :model
 
   schema "users" do
     field :name, :string
@@ -12,10 +13,10 @@ defmodule Contactapi.User do
     timestamps
   end
 
-  def changeset(mode, params \\ :empty) do
+  def changeset(model, params \\ :empty) do
     model
       |> cast(params, ~w(name username), [])
-      |> validate_length(:username, min: 4, max:20)
+      |> validate_length(:username, min: 4, max: 20)
   end
 
   def registration_changeset(model, params) do
