@@ -1,0 +1,5 @@
+<tr>
+    <td> <%= @user.id %> </td>
+    <td> <%= first_name(@user) %> </td>
+    <td> <%= link "View", to: user_path(@conn, :show, @user.id) %> </td>
+</tr>

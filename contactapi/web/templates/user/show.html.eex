@@ -1,0 +1,13 @@
+<h1> User <%= @user.id %></h1>
+<table class="table">
+    <tr>
+        <td> First Name </td>
+        <td><%= first_name(@user) %></td>
+    </tr>
+     <tr>
+        <td> Email </td>
+        <td><%= @user.email %></td>
+    </tr>
+</table>
+
+<%= link " <- Back to List", to: user_path(@conn, :index) %>

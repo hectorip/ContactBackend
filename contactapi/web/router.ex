@@ -16,7 +16,7 @@ defmodule Contactapi.Router do
   scope "/", Contactapi do
     pipe_through :browser # Use the default browser stack
 
-    resources "/user", UserController, only: [:index, :show]
+    resources "/user", UserController, only: [:index, :show, :new, :create]
     get "/", PageController, :index
   end
 
