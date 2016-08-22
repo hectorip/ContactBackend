@@ -62,4 +62,16 @@ defmodule Contactapi.VolunteerFormController do
     |> put_flash(:info, "Volunteer form deleted successfully.")
     |> redirect(to: volunteer_form_path(conn, :index))
   end
+
+  def create_api(conn, %{"volunteer_form" => volunteer_form_params}) do
+    changeset = VolunteerForm.changeset(%VolunteerForm{}, volunteer_form_params)
+
+    case Repo.insert(changeset) do
+      {:ok, _volunteer_form} ->
+        conn
+        |> json(%{message: "Volunteer form Registered"})
+      {:error, changeset} ->
+        json(conn, %{message: "Error Creating Volunteer Form"})
+    end
+  end
 end
