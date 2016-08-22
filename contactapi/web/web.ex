@@ -36,6 +36,7 @@ defmodule Contactapi.Web do
 
       import Contactapi.Router.Helpers
       import Contactapi.Gettext
+      import Contactapi.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -58,6 +59,7 @@ defmodule Contactapi.Web do
   def router do
     quote do
       use Phoenix.Router
+      import Contactapi.Auth, only: [authenticate_user: 2]
     end
   end
 

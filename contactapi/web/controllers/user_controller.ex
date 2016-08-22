@@ -1,5 +1,6 @@
 defmodule Contactapi.UserController do
   use Contactapi.Web, :controller
+  plug :authenticate_user when action in [:index, :show]
   alias Contactapi.User
 
   def index(conn, _params) do

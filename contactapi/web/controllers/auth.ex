@@ -1,6 +1,6 @@
 defmodule Contactapi.Auth do
   import Phoenix.Controller
-  alias Rumbl.Router.Helpers
+  alias Contactapi.Router.Helpers
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
@@ -10,7 +10,7 @@ defmodule Contactapi.Auth do
 
   def call(conn, repo) do
     user_id = get_session(conn, :user_id)
-    user = user_id && repo.get(Rumbl.User, user_id)
+    user = user_id && repo.get(Contactapi.User, user_id)
     assign(conn, :current_user, user)
   end
 
@@ -36,13 +36,18 @@ defmodule Contactapi.Auth do
     end
   end
 
-  def authenticate(conn, _opts) do
+  def logout(conn) do
+    configure_session(conn, drop: true)
+  end
+
+  def authenticate_user(conn, _opts) do
     # This is a plug
     if conn.assigns.current_user do
       conn
     else
       conn
       |> put_flash(:error, "You must be logged in")
+      |> redirect(to: Helpers.page_path(conn, :index))
       |> halt
     end
   end

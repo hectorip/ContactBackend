@@ -6,7 +6,7 @@ defmodule Contactapi.SessionController do
   end
 
   def create(conn, _params = %{"session" => %{"username" => user, "password" => pass}}) do
-    case Rumbl.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo ) do
+    case Contactapi.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo ) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back!")
@@ -16,5 +16,11 @@ defmodule Contactapi.SessionController do
         |> put_flash(:error, "Invalid usename-password cobination")
         |> render("new.html")
     end
+  end
+
+  def delete(conn, _) do
+    conn
+      |> Contactapi.Auth.logout
+      |> redirect(to: page_path(conn, :index))
   end
 end
