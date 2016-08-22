@@ -23,8 +23,8 @@ defmodule Contactapi.UserController do
       {:ok, user} ->
         conn
         #|> Contactapi.Auth.login(user)
-        |>put_flash(:info, "#{user.name} has been created")
-        |> redirect(to: user_path(conn, :index))
+          |> put_flash(:info, "#{user.name} has been created")
+          |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
         conn
           |> put_flash(:error, "Check the errors below")
