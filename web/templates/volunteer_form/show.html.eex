@@ -1,0 +1,53 @@
+<h2>Show volunteer form</h2>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @volunteer_form.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @volunteer_form.last_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @volunteer_form.email %>
+  </li>
+
+  <li>
+    <strong>Gender:</strong>
+    <%= @volunteer_form.gender %>
+  </li>
+
+  <li>
+    <strong>Country:</strong>
+    <%= @volunteer_form.country %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @volunteer_form.city %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @volunteer_form.age %>
+  </li>
+
+  <li>
+    <strong>Phone number:</strong>
+    <%= @volunteer_form.phone_number %>
+  </li>
+
+  <li>
+    <strong>Participation type:</strong>
+    <%= @volunteer_form.participation_type %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: volunteer_form_path(@conn, :edit, @volunteer_form) %>
+<%= link "Back", to: volunteer_form_path(@conn, :index) %>

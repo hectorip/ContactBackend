@@ -1,0 +1,42 @@
+<h2>Listing volunteerforms</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Age</th>
+      <th>Phone number</th>
+      <th>Participation type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for volunteer_form <- @volunteerforms do %>
+    <tr>
+      <td><%= volunteer_form.first_name %></td>
+      <td><%= volunteer_form.last_name %></td>
+      <td><%= volunteer_form.email %></td>
+      <td><%= volunteer_form.gender %></td>
+      <td><%= volunteer_form.country %></td>
+      <td><%= volunteer_form.city %></td>
+      <td><%= volunteer_form.age %></td>
+      <td><%= volunteer_form.phone_number %></td>
+      <td><%= volunteer_form.participation_type %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: volunteer_form_path(@conn, :show, volunteer_form), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: volunteer_form_path(@conn, :edit, volunteer_form), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: volunteer_form_path(@conn, :delete, volunteer_form), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New volunteer form", to: volunteer_form_path(@conn, :new) %>
