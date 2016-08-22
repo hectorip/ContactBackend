@@ -1,0 +1,6 @@
+<h2>New basic form</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: basic_form_path(@conn, :create) %>
+
+<%= link "Back", to: basic_form_path(@conn, :index) %>

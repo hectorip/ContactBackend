@@ -1,0 +1,34 @@
+<h2>Listing basicforms</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Read</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for basic_form <- @basicforms do %>
+    <tr>
+      <td><%= basic_form.name %></td>
+      <td><%= basic_form.subject %></td>
+      <td><%= basic_form.email %></td>
+      <td><%= basic_form.message %></td>
+      <td><%= basic_form.read %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: basic_form_path(@conn, :show, basic_form), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: basic_form_path(@conn, :edit, basic_form), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: basic_form_path(@conn, :delete, basic_form), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New basic form", to: basic_form_path(@conn, :new) %>

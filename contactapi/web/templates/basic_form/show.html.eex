@@ -1,0 +1,33 @@
+<h2>Show basic form</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @basic_form.name %>
+  </li>
+
+  <li>
+    <strong>Subject:</strong>
+    <%= @basic_form.subject %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @basic_form.email %>
+  </li>
+
+  <li>
+    <strong>Message:</strong>
+    <%= @basic_form.message %>
+  </li>
+
+  <li>
+    <strong>Read:</strong>
+    <%= @basic_form.read %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: basic_form_path(@conn, :edit, @basic_form) %>
+<%= link "Back", to: basic_form_path(@conn, :index) %>

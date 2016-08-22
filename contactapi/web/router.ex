@@ -22,6 +22,10 @@ defmodule Contactapi.Router do
     get "/", PageController, :index
   end
 
+  scope "/admin", Contactapi do
+    pipe_through [:browser, :authenticate_user]
+    resources "/basicforms", BasicFormController
+  end
   # Other scopes may use custom stacks.
   # scope "/api", Contactapi do
   #   pipe_through :api
