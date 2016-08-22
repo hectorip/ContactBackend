@@ -62,4 +62,16 @@ defmodule Contactapi.BasicFormController do
     |> put_flash(:info, "Basic form deleted successfully.")
     |> redirect(to: basic_form_path(conn, :index))
   end
+
+  def create_api(conn, %{"basic_form" => basic_form_params}) do
+    changeset = BasicForm.changeset(%BasicForm{}, basic_form_params)
+
+    case Repo.insert(changeset) do
+      {:ok, _basic_form} ->
+        conn
+        |> json(%{message: "successfully added"})
+      {:error, changeset} ->
+        json(conn, %{message: "Error creating basic form"})
+    end
+  end
 end

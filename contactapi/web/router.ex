@@ -12,6 +12,7 @@ defmodule Contactapi.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
   end
 
   scope "/", Contactapi do
@@ -27,7 +28,8 @@ defmodule Contactapi.Router do
     resources "/basicforms", BasicFormController
   end
   # Other scopes may use custom stacks.
-  # scope "/api", Contactapi do
-  #   pipe_through :api
-  # end
+  scope "/api", Contactapi do
+    pipe_through :api
+    post "/basicforms/new", BasicFormController, :create_api
+  end
 end
