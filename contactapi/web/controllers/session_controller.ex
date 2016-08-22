@@ -17,15 +17,4 @@ defmodule Contactapi.SessionController do
         |> render("new.html")
     end
   end
-
-  def authenticate(conn, _opts) do
-    # This is a plug
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "You must be logged in")
-      |> halt
-    end
-  end
 end
