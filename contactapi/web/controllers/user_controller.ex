@@ -19,15 +19,16 @@ defmodule Contactapi.UserController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.registration_changeset(%User{}, user_params)
-    case Repo.insert(cangeset) do
+    case Repo.insert(changeset) do
       {:ok, user} ->
         conn
         #|> Contactapi.Auth.login(user)
-        |>put_plash(:info, "#{user.name} has been created")
+        |>put_flash(:info, "#{user.name} has been created")
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
         conn
           |> put_flash(:error, "Check the errors below")
           |> render("new.html", changeset: changeset)
+    end
   end
 end
