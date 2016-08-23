@@ -15,7 +15,7 @@ defmodule Contactapi.User do
 
   def changeset(model, params \\ :empty) do
     model
-      |> cast(params, ~w(name username), [])
+      |> cast(params, ~w(name username email), [])
       |> validate_length(:username, min: 4, max: 20)
   end
 
