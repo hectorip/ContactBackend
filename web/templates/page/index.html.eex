@@ -9,7 +9,6 @@
         <%= link "Contact Messages", to: basic_form_path(@conn, :index), class: "btn btn-primary"%>
         <%= link "Volunteer Messages", to: volunteer_form_path(@conn, :index), class: "btn btn-primary" %>
     <% else %>
-        <h4>Login</h4>
         <%= render Contactapi.SessionView, "new.html", conn: @conn %>
     <% end %>
   </div>
