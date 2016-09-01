@@ -4,4 +4,8 @@ defmodule Contactapi.PageController do
   def index(conn, _params) do
     render conn, "index.html"
   end
+
+  def wakeup(conn, _params) do
+    json conn, %{message: "I'm awake now"}
+  end
 end

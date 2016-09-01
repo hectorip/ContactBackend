@@ -8,4 +8,4 @@ Features:
 -  Alerts via SMS and email (other alert systems easily pluggable)
 -  Configurable responses
 
-This project is also created in an effort to learn better Phoenix.
+This project is also created in an effort to learn better Phoenix, the Elixir Framework.
