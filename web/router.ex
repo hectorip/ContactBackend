@@ -33,6 +33,6 @@ defmodule Contactapi.Router do
     pipe_through :api
     post "/basicforms/new", BasicFormController, :create_api
     post "/volunteerforms/new", VolunteerFormController, :create_api
-    post "/wakeup", PageController, :wakeup
+    get "/wakeup", PageController, :wakeup
   end
 end
